@@ -21,10 +21,7 @@ class Actor(models.Model):
     last_name = models.CharField(max_length=63)
 
     def __str__(self):
-        return self.first_name + " " + self.last_name
-
-    class Meta:
-        pass
+        return f"{self.first_name} {self.last_name}"
 
 
 class Genre(models.Model):
@@ -32,9 +29,6 @@ class Genre(models.Model):
 
     def __str__(self):
         return self.name
-
-    class Meta:
-        pass
 
 
 class CinemaHall(models.Model):

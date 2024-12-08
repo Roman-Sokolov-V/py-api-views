@@ -17,21 +17,15 @@ class MovieSerializer(serializers.Serializer):
     duration = serializers.IntegerField()
 
     def create(self, validated_data):
-        # Отримуємо зв'язки
         actors = validated_data.pop("actors", [])
         genres = validated_data.pop("genres", [])
-
-        # Створюємо об'єкт Movie
         movie = Movie.objects.create(**validated_data)
-
-        # Прив'язуємо зв'язки
         movie.actors.set(actors)
         movie.genres.set(genres)
 
         return movie
 
     def update(self, instance, validated_data):
-        # Отримуємо зв'язки
         actors = validated_data.pop("actors", None)
         genres = validated_data.pop("genres", None)
         instance.title = validated_data.get("title", instance.title)
