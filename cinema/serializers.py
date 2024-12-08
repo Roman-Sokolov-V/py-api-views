@@ -87,8 +87,8 @@ class GenreSerializer(serializers.Serializer):
 class CinemaHallSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     name = serializers.CharField(max_length=255)
-    rows = serializers.IntegerField(min_value=1, max_value=200)
-    seats_in_row = serializers.IntegerField(min_value=1, max_value=200)
+    rows = serializers.IntegerField()
+    seats_in_row = serializers.IntegerField()
 
     def create(self, validated_data):
         return CinemaHall.objects.create(**validated_data)
